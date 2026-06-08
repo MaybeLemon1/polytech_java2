@@ -9,9 +9,9 @@ public class Main {
         // int a = 10;
         // long l = 10L; // literal
 
-        Cleric cleric = new Cleric("클레릭", 50, 10);
+        Cleric cleric = new Cleric("클레릭", 30, 7);
 
-        System.out.println(cleric.maxHp);
-        System.out.println(cleric.maxMp);
+        int mpRecovery = cleric.pray(3);
+        System.out.println(mpRecovery);
     }
 }

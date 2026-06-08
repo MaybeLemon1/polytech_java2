@@ -16,12 +16,28 @@ public class Cleric {
 
     void status() {
         System.out.println(name);
-        System.out.println(hp / maxHp);
-        System.out.println(mp / maxMp);
+        System.out.println(hp + "/" + maxHp);
+        System.out.println(mp + "/" + maxMp);
     }
 
     void selfAid() {
-        this.mp -= 5;
-        this.hp = maxHp;
+        if (mp >= 5) {
+            this.mp -= 5;
+            this.hp = maxHp;
+        }
+    }
+
+    public int pray(int i) {
+
+        int beforeMp = mp;
+
+        int mpRecovery = (int) (Math.random() * 3) + i;
+
+        mp += mpRecovery;
+        if (mp >= maxMp) {
+            mp = maxMp;
+        }
+
+        return mp - beforeMp;
     }
 }
