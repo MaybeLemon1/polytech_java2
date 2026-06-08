@@ -19,4 +19,9 @@ public class Cleric {
         System.out.println(hp / maxHp);
         System.out.println(mp / maxMp);
     }
+
+    void selfAid() {
+        this.mp -= 5;
+        this.hp = maxHp;
+    }
 }

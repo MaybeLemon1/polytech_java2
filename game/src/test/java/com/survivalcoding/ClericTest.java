@@ -17,6 +17,9 @@ class ClericTest {
         assertEquals(5, cleric.mp);
         assertEquals(10, cleric.maxMp);
 
+        cleric.selfAid();
 
+        assertEquals(50, cleric.hp);
+        assertEquals(0, cleric.mp);
     }
 }
