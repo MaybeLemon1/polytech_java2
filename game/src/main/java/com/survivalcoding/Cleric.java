@@ -4,9 +4,10 @@ public class Cleric {
     String name;
 
     int hp;
-    final int maxHp = 50;
+    static final int maxHp = 50;
     int mp;
-    final int maxMp = 10;
+    static final int maxMp = 10;
+    static final int selfAidMpCost = 5;
 
     public Cleric(String name, int hp, int mp) {
         this.name = name;
@@ -21,17 +22,17 @@ public class Cleric {
     }
 
     void selfAid() {
-        if (mp >= 5) {
-            this.mp -= 5;
-            this.hp = maxHp;
+        if (mp >= selfAidMpCost) {
+            mp -= selfAidMpCost;
+            hp = maxHp;
         }
     }
 
-    public int pray(int i) {
+    public int pray(int sec) {
 
         int beforeMp = mp;
 
-        int mpRecovery = (int) (Math.random() * 3) + i;
+        int mpRecovery = (int) (Math.random() * 3) + sec;
 
         mp += mpRecovery;
         if (mp >= maxMp) {
