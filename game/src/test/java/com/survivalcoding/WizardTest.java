@@ -3,8 +3,7 @@ package com.survivalcoding;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 class WizardTest {
 
@@ -72,4 +71,53 @@ class WizardTest {
         assertSame(wand, wizard.getWand());
     }
 
+    @Test
+    @DisplayName("마법사 이름은 null일 수 없다")
+    void setName_null() {
+        Wizard wizard = new Wizard();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            wizard.setName(null);
+        });
+    }
+
+    @Test
+    @DisplayName("마법사 이름은 3문자 이상이어야 한다")
+    void setName_under3Characters() {
+        Wizard wizard = new Wizard();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            wizard.setName("ab");
+        });
+    }
+
+    @Test
+    @DisplayName("마법사의 지팡이는 null일 수 없다")
+    void setWand_null() {
+        Wizard wizard = new Wizard();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            wizard.setWand(null);
+        });
+    }
+
+    @Test
+    @DisplayName("마법사의 MP는 0 미만일 수 없다")
+    void setMp_negative() {
+        Wizard wizard = new Wizard();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            wizard.setMp(-1);
+        });
+    }
+
+    @Test
+    @DisplayName("마법사의 HP가 음수이면 0으로 설정된다")
+    void setHp_negativeBecomesZero() {
+        Wizard wizard = new Wizard();
+
+        wizard.setHp(-10);
+
+        assertEquals(0, wizard.getHp());
+    }
 }
